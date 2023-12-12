@@ -1,2 +1,2 @@
-# sh-auth
-User authentication server in Go!
+# sh-auth - user authentication server in Go!
+## Currently not usable - no features
