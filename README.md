@@ -1,2 +1,7 @@
 # sh-auth - user authentication server in Go!
-## Currently not usable - no features
+## Features
+ - Receiving user credentials and saving to disk
+
+## TODO!
+ - Sending user credentials 
+ - Better error reporting (via HTTP status codes)
