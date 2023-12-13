@@ -5,3 +5,4 @@
 ## TODO!
  - Sending user credentials 
  - Better error reporting (via HTTP status codes)
+ - Server authentication (via hash password)
