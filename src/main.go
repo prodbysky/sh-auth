@@ -17,6 +17,18 @@ import (
 
 var users []models.User
 
+func removeDuplicates(s []models.User) []models.User {
+   bucket := make(map[models.User]bool)
+   var result []models.User
+   for _, usr := range s {
+      if _, ok := bucket[usr]; !ok {
+         bucket[usr] = true
+         result = append(result, usr)
+      }
+   }
+   return result
+}
+
 // Router related functions
 func authHash() string {
     curr_time := time.Now().Unix()
@@ -102,6 +114,7 @@ func main() {
     endless.ListenAndServe(":8080", router)
 
     // Saving users
+    users = removeDuplicates(users)
     bytes, err := json.Marshal(users)
     if err != nil {
         log.Fatalln("Failed to marshal users:", err)
