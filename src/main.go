@@ -85,6 +85,7 @@ func saveUsers(filename string, users []models.User) {
 
 func main() {
     filename := "users.dat"
+    // Reading users
     data, err := os.ReadFile(filename)
     if err != nil {
         log.Fatalf("Non-existent filename provided %s\n", filename)
@@ -94,11 +95,13 @@ func main() {
     if err != nil {
         log.Fatalln("Failed unmarshalling data")
     }
+
     router := gin.Default()
     router.GET("/", status)
     router.GET("/sendUser", getUser)
     endless.ListenAndServe(":8080", router)
 
+    // Saving users
     bytes, err := json.Marshal(users)
     if err != nil {
         log.Fatalln("Failed to marshal users:", err)
